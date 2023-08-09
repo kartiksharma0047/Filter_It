@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiter It</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    #numbers {
+      width: 250px;
+      height: 30px;
+      margin-right: 10px;
+      padding: 5px;
+    }
+
+    #submitBtn {
+      padding: 5px 10px;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="numbers" placeholder="Enter comma-separated numbers..." />
+  <button type="submit" id="submitBtn">Submit</button>
+  <p id="result"></p>
+
+
+  <!-- Filter It
+
+
+You are given a simple HTML page with a form and a submit button. The form takes comma-separated numbers as input from the user.
+The user can enter a list of comma-separated numbers in the input field with id #numbers.
+When the user presses the "Submit" button with id #submitBtn, your task is to create a JavaScript function using Filter to return numbers that are even from the input and display the result in the paragraph tag with id #result.
+If the input is "34,67,78,65" then the output is "The even numbers are: 34, 78"
+Do not change the HTML or CSS. Write the JavaScript code to handle this functionality. -->
+
+  <script>
+
+    let input = document.querySelector("#numbers");
+    let btn = document.querySelector("#submitBtn");
+    let show = document.querySelector("#result");
+
+    btn.onclick = () => {
+      const numbersInput = input.value;
+      input.value="";
+      show.innerHTML="";
+      const numbersArray = numbersInput.split(",");
+      const evenNumbers = numbersArray.filter(num =>  num % 2 === 0 );
+
+      if (evenNumbers.length > 0) {
+        const evenNumbersText = "The even numbers are: " + evenNumbers.join(", ");
+        show.textContent = evenNumbersText;
+      } else {
+        show.textContent = "No even numbers found.";
+      }
+    };
+  </script>
+</body>
+
+</html>
